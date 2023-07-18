@@ -4,34 +4,42 @@ import "./index.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-
-    /* 
-      header
-        - logo
-        - Nav items
-        - Cart
-      body
-        - Search bar
-        - Restaurant List 
-          - Restaurant Card
-            - Image
-            - Name
-            - Rating
-            -Cuisines
-      footer
-        - links
-        - Copyright
-      */
+import About from "./components/About";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={routes} />);
