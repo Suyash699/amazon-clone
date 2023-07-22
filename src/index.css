@@ -35,8 +35,12 @@
 .shimmer-card{
   width: 200px;
   height: 200px;
-  border: 1px solid black;
   padding: 10px;
   margin: 20px;
   background-color: lightgrey;
+}
+
+.menu{
+  display: flex;
+  margin: 5px;
 }
