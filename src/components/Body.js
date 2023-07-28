@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) => {
-    return restaurant?.data?.name?.toLowerCase().includes(searchText.toLowerCase());
+    return restaurant?.info?.name?.toLowerCase().includes(searchText.toLowerCase());
   });
 
   return filterData;
@@ -15,8 +15,7 @@ function filterData(searchText, restaurants) {
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] =
-    useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -28,9 +27,11 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING#"
     );
     const json = await data.json();
-    console.log(json);
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    // console.log(json);
+    setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   }
 
 
@@ -58,7 +59,7 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
-            console.log(data);
+            // console.log(data);
             setFilteredRestaurants(data);
           }}
         >
@@ -69,10 +70,10 @@ const Body = () => {
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
-              to={"/restaurant/" + restaurant.data.id}
-              key={restaurant.data.id}
+              to={"/restaurant/" + restaurant.info.id}
+              key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant.data} />
+              <RestaurantCard {...restaurant.info} />
             </Link>
           );
         })}
