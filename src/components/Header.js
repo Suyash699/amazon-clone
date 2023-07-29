@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Title = () => (
   <a href="/">
@@ -12,7 +13,10 @@ const Title = () => (
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  console.log(useState());
+
+//build a hook for useAuth instead of using isLoggedIn.
+  const isOnline = useOnline();
+  
   return (
     <div className="header">
       <Title />
@@ -30,6 +34,9 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+
+      <h1>{isOnline? "🟢" : "🔴"}</h1>
+      
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Logout</button>
       ) : (
