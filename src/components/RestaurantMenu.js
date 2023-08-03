@@ -13,34 +13,47 @@ const RestaurantMenu = () => {
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="menu">
+    <div className="flex bg-blue-50">
       <div>
         <h1>Restaurant id: {resId}</h1>
-        <h2>{restaurant?.cards?.[0]?.card?.card?.info?.name}</h2>
+        <h2 className="font-bold text-2xl p-2">
+          {restaurant?.cards?.[0]?.card?.card?.info?.name}
+        </h2>
         <img
           src={
             IMG_CDN_URL +
             restaurant?.cards?.[0]?.card?.card?.info?.cloudinaryImageId
           }
           alt=""
+          className="h-96 w-96 m-2 rounded-lg"
         />
-        <h3>{restaurant?.cards?.[0]?.card?.card?.info?.areaName}</h3>
-        <h3>{restaurant?.cards?.[0]?.card?.card?.info?.city}</h3>
-        <h3>{restaurant?.cards?.[0]?.card?.card?.info?.avgRating} stars</h3>
-        <h3>{restaurant?.cards?.[0]?.card?.card?.info?.costForTwoMessage}</h3>
+        <h3 className="font-medium text-xl p-2">
+          {restaurant?.cards?.[0]?.card?.card?.info?.areaName}
+        </h3>
+        <h3 className="font-medium text-xl p-2">
+          {restaurant?.cards?.[0]?.card?.card?.info?.city}
+        </h3>
+        <h3 className="font-medium text-xl p-2">
+          {restaurant?.cards?.[0]?.card?.card?.info?.avgRating} stars
+        </h3>
+        <h3 className="font-medium text-xl p-2">
+          {restaurant?.cards?.[0]?.card?.card?.info?.costForTwoMessage}
+        </h3>
       </div>
-      <div>
-        <h1>Menu</h1>
+      <div className="ml-72">
+        <h1 className="text-2xl font-bold p-2">Menu</h1>
         <ul>
           {restaurant &&
-              Object.values(
-                restaurant
-              )?.[1]?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards?.map(
-                (item) =>(
-                    <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
-                  )
+            Object.values(
+              restaurant
+            )?.[1]?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards?.map(
+              (item) => (
+                <li key={item?.card?.info?.id} className="text-lg">
+                  {item?.card?.info?.name}{" "}
+                  <hr className="border-blue-200" />
+                </li>
               )
-            }
+            )}
         </ul>
       </div>
     </div>

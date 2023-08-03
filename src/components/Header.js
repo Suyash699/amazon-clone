@@ -18,25 +18,25 @@ const Header = () => {
   const isOnline = useOnline();
   
   return (
-    <div className="header">
+    <div className="flex justify-between bg-blue-50 shadow-lg">
       <Title />
-      <div className="nav-items">
-        <ul>
+      <div>
+        <ul className="flex py-10">
           <Link to="/">
-            <li>Home</li>
+            <li className="px-2">Home</li>
           </Link>
           <Link to="/about">
-            <li>About</li>
+            <li className="px-2">About</li>
           </Link>
           <Link to="/contact">
-            <li>Contact Us</li>
+            <li className="px-2">Contact Us</li>
           </Link>
-          <li>Cart</li>
+          <li className="px-2">Cart</li>
         </ul>
       </div>
 
-      <h1>{isOnline? "🟢" : "🔴"}</h1>
-      
+      <h1>{isOnline ? "🟢" : "🔴"}</h1>
+
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Logout</button>
       ) : (

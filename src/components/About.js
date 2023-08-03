@@ -1,31 +1,64 @@
-import Profile from "./ProfileClass";
+// import Profile from "./ProfileClass";
 import React from "react";
 
+class About extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   // console.log("Parent - constructor");
+  // }
 
-class About extends React.Component{
-  constructor(props){
-    super(props);
-    console.log("Parent - constructor");
-  }
+  // componentDidMount(){
+  //   console.log("Parent - componentDidMount")
+  // }
 
-componentDidMount(){
-  console.log("Parent - componentDidMount")
-}
-
-  render(){
-    console.log("Parent - render")
+  render() {
+    const people = [
+      {
+        name: "Leslie Alexander",
+        role: "Co-Founder / CEO",
+        imageUrl:
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      // More people...
+    ];
     return (
-      <>
-        <h1>About Us</h1>
-        <h2>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi unde
-          reiciendis accusantium, quisquam vel nobis rerum suscipit a nam
-          temporibus fuga pariatur facilis optio veniam quasi nulla praesentium
-          quam esse?
-        </h2>
-
-        <Profile name="Suyash" />
-      </>
+      <div className="bg-blue-50 py-24 sm:py-32">
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Meet our leadership
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Libero fames augue nisl porttitor nisi, quis. Id ac elit odio
+              vitae elementum enim vitae ullamcorper suspendisse.
+            </p>
+          </div>
+          <ul
+            role="list"
+            className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
+          >
+            {people.map((person) => (
+              <li key={person.name}>
+                <div className="flex items-center gap-x-6">
+                  <img
+                    className="h-24 w-24 rounded-full"
+                    src={person.imageUrl}
+                    alt=""
+                  />
+                  <div>
+                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm font-semibold leading-6 text-indigo-600">
+                      {person.role}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     );
   }
 }
