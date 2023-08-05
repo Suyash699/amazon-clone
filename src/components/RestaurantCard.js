@@ -5,6 +5,7 @@ const RestaurantCard = ({
   name,
   cuisines,
   lastMileTravel,
+  user
 }) => {
   return (
     <div className="w-56 p-2 m-2 shadow-lg bg-blue-100 hover:scale-95 rounded-lg">
@@ -12,6 +13,7 @@ const RestaurantCard = ({
       <h2 className="font-bold text-xl">{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
       <h4>{lastMileTravel} km</h4>
+      <h4>{user.name}</h4>
     </div>
   );
 };

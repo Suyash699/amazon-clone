@@ -32,6 +32,9 @@ const Header = () => {
             <li className="px-2">Contact Us</li>
           </Link>
           <li className="px-2">Cart</li>
+          <Link to="/instamart">
+            <li className="px-2">Instamart</li>
+          </Link>
         </ul>
       </div>
 

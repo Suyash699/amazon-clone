@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./components/Header";
@@ -10,10 +10,15 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Instamart from "./components/Instamart";
 
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Suyash",
+    email: "psuyash17.sp@gmail.com"
+  });
   return (
     <>
       <Header />
@@ -31,7 +36,8 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <Body user={{name: "Suyash",
+    email: "psuyash17.sp@gmail.com"}}/>,
       },
       {
         path: "/about",
@@ -48,6 +54,10 @@ const routes = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: <Instamart />,
       }
     ],
   },

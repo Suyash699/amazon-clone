@@ -46,7 +46,7 @@ const RestaurantMenu = () => {
           {restaurant &&
             Object.values(
               restaurant
-            )?.[1]?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards?.map(
+            )?.[1]?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards?.map(
               (item) => (
                 <li key={item?.card?.info?.id} className="text-lg">
                   {item?.card?.info?.name}{" "}
