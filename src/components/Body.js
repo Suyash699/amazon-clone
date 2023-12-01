@@ -1,11 +1,9 @@
 //config driven ui
 import { useEffect, useState } from "react";
-// import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
-// import useOnline from "../utils/useOnline";
 
 const Body = ({user}) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -21,20 +19,11 @@ const Body = ({user}) => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&sortBy=RELEVANCE&page_type=DESKTOP_WEB_LISTING#"
     );
     const json = await data.json();
-    // console.log(json);
     setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   }
-
-  // const isOnline = useOnline();
-
-  // if(!isOnline){
-  //   return(
-  //     <h1>Offline, please check your internet.</h1>
-  //   )
-  // }
 
   //early return as well as avoid rendering component
 
@@ -58,7 +47,6 @@ const Body = ({user}) => {
           className="p-2 m-2 bg-slate-600 text-white rounded-xl hover:bg-blue-900"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
-            // console.log(data);
             setFilteredRestaurants(data);
           }}
         >

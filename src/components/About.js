@@ -1,17 +1,7 @@
-// import Profile from "./ProfileClass";
 import React from "react";
 import UserContext from "../utils/UserContext";
 
 class About extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   // console.log("Parent - constructor");
-  // }
-
-  // componentDidMount(){
-  //   console.log("Parent - componentDidMount")
-  // }
-
   render() {
     const people = [
       {
@@ -20,7 +10,6 @@ class About extends React.Component {
         imageUrl:
           "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
-      // More people...
     ];
     return (
       <div className="bg-blue-50 py-24 sm:py-32 h-[76vh]">
@@ -34,9 +23,7 @@ class About extends React.Component {
               vitae elementum enim vitae ullamcorper suspendisse.
             </p>
           </div>
-          <ul
-            className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
-          >
+          <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
             {people.map((person) => (
               <li key={person.name}>
                 <div className="flex items-center gap-x-6">

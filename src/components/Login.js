@@ -32,7 +32,6 @@ const Login = () => (
         handleBlur,
         handleSubmit,
         isSubmitting,
-        /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>
           <input
